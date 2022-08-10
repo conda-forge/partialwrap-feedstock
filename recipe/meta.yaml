@@ -1,5 +1,5 @@
 {% set name = "partialwrap" %}
-{% set version = "1.6" %}
+{% set version = "1.7" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/partialwrap-{{ version }}.tar.gz
-  sha256: feb7efbcf6618ccff7c13862beb07ae2ab0f9bdece1f3c7bdb13dafba8c68118
+  sha256: 2840d4890aa98f992ad96bfd27713c7095e943670f12499eb4d3be5d80e5cd97
 
 build:
   number: 0
