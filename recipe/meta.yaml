@@ -1,6 +1,5 @@
 {% set name = "partialwrap" %}
-{% set version = "1.7" %}
-
+{% set version = "2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/partialwrap-{{ version }}.tar.gz
-  sha256: 2840d4890aa98f992ad96bfd27713c7095e943670f12499eb4d3be5d80e5cd97
+  sha256: 1246841e3ef0dd652519f0136606d978b31ba6da9b5f5036e104ac384ca5f57e
 
 build:
   number: 0
@@ -17,12 +16,12 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python >=3.8
     - pip
     - setuptools >=42
     - setuptools_scm >=3.5
   run:
-    - python >=3.6
+    - python >=3.8
     - numpy
 
 test:
@@ -35,19 +34,25 @@ test:
 
 about:
   home: https://github.com/mcuntz/partialwrap
-  summary: 'A small Python library providing wrappers for external executables and Python functions so that they can easily be partialised with Pythons functools.partial'
+  summary: "A small Python library providing wrappers for external executables and Python functions to be used easily with Python’s functools.partial"
   dev_url: https://github.com/mcuntz/partialwrap
   license: MIT
   license_file: LICENSE
   description: |
-    partialwrap is a Python library providing easy wrapper functions to use with
-    Python's functools.partial. It allows to use any external executable as well
-    as any Python function with arbitrary arguments and keywords to be used with
-    libraries that call functions simply in the form func(x). This includes the
-    functions of the scipy.optimize package or external packages such as emcee
-    or pyeee, and allows the use of distributed function evaluations with
-    Python's multiprocessing or via mpi4py.
-  doc_url: https://partialwrap.readthedocs.io/
+    partialwrap is a Python library providing easy wrapper functions
+    to use with Python’s functools.partial. Partial's ingenious
+    mechanism allows to use even very complex functions with many
+    arguments and keyword arguments with routines that need functions in
+    the simple form func(x). This includes Python's map function,
+    the minimizers in scipy.optimize, and plenty of third-party modules
+    such as emcee or pyeee. partialwrap allows to use any
+    external executable as well as any Python function with arbitrary
+    arguments and keywords to be used with functools.partial. It also
+    allows to use the executables or functions with easy parallelization
+    of code with, for example, the parallel map function of the
+    multiprocessing module or via the Message Passing Interface
+    (MPI).
+  doc_url: https://mcuntz.github.io/partialwrap/
 
 extra:
   recipe-maintainers:
