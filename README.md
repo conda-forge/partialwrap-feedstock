@@ -1,25 +1,31 @@
-About partialwrap
-=================
+About partialwrap-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/partialwrap-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/mcuntz/partialwrap
 
 Package license: MIT
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/partialwrap-feedstock/blob/master/LICENSE.txt)
-
-Summary: A small Python library providing wrappers for external executables and Python functions so that they can easily be partialised with Pythons functools.partial
+Summary: A small Python library providing wrappers for external executables and Python functions to be used easily with Python’s functools.partial
 
 Development: https://github.com/mcuntz/partialwrap
 
-Documentation: https://partialwrap.readthedocs.io/
+Documentation: https://mcuntz.github.io/partialwrap/
 
-partialwrap is a Python library providing easy wrapper functions to use with
-Python's functools.partial. It allows to use any external executable as well
-as any Python function with arbitrary arguments and keywords to be used with
-libraries that call functions simply in the form func(x). This includes the
-functions of the scipy.optimize package or external packages such as emcee
-or pyeee, and allows the use of distributed function evaluations with
-Python's multiprocessing or via mpi4py.
+partialwrap is a Python library providing easy wrapper functions
+to use with Python’s functools.partial. Partial's ingenious
+mechanism allows to use even very complex functions with many
+arguments and keyword arguments with routines that need functions in
+the simple form func(x). This includes Python's map function,
+the minimizers in scipy.optimize, and plenty of third-party modules
+such as emcee or pyeee. partialwrap allows to use any
+external executable as well as any Python function with arbitrary
+arguments and keywords to be used with functools.partial. It also
+allows to use the executables or functions with easy parallelization
+of code with, for example, the parallel map function of the
+multiprocessing module or via the Message Passing Interface
+(MPI).
 
 
 Current build status
@@ -28,8 +34,8 @@ Current build status
 
 <table><tr><td>All platforms:</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=14494&branchName=master">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/partialwrap-feedstock?branchName=master">
+      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=14494&branchName=main">
+        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/partialwrap-feedstock?branchName=main">
       </a>
     </td>
   </tr>
@@ -52,16 +58,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `partialwrap` can be installed with:
+Once the `conda-forge` channel has been enabled, `partialwrap` can be installed with `conda`:
 
 ```
 conda install partialwrap
 ```
 
-It is possible to list all of the versions of `partialwrap` available on your platform with:
+or with `mamba`:
+
+```
+mamba install partialwrap
+```
+
+It is possible to list all of the versions of `partialwrap` available on your platform with `conda`:
 
 ```
 conda search partialwrap --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search partialwrap --channel conda-forge
+```
+
+Alternatively, `mamba repoquery` may provide more information:
+
+```
+# Search all versions available on your platform:
+mamba repoquery search partialwrap --channel conda-forge
+
+# List packages depending on `partialwrap`:
+mamba repoquery whoneeds partialwrap --channel conda-forge
+
+# List dependencies of `partialwrap`:
+mamba repoquery depends partialwrap --channel conda-forge
 ```
 
 
@@ -79,10 +110,12 @@ for each of the installable packages. Such a repository is known as a *feedstock
 A feedstock is made up of a conda recipe (the instructions on what and how to build
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
-[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/)
-and [TravisCI](https://travis-ci.com/) it is possible to build and upload installable
-packages to the [conda-forge](https://anaconda.org/conda-forge)
-[Anaconda-Cloud](https://anaconda.org/) channel for Linux, Windows and OSX respectively.
+[Azure](https://azure.microsoft.com/en-us/services/devops/), [GitHub](https://github.com/),
+[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
+[Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
+it is possible to build and upload installable packages to the
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
+channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
