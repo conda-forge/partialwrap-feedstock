@@ -6,22 +6,22 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/partialwrap-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/partialwrap-{{ version }}.tar.gz
   sha256: 1246841e3ef0dd652519f0136606d978b31ba6da9b5f5036e104ac384ca5f57e
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
     - setuptools >=42
     - setuptools_scm >=3.5
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - numpy
 
 test:
@@ -31,6 +31,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/mcuntz/partialwrap
